@@ -1,4 +1,4 @@
-package com.skku_capstone_2020_2;
+package com.whoissio.covid_blind;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "skku_capstone_2020_2";
+    return "covid_blind";
   }
 }
