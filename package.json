@@ -1,9 +1,9 @@
 {
-  "name": "skku_capstone_2020_2",
-  "version": "0.0.1",
+  "name": "covid_blind",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "react-native run-android --appId=com.whoissio.covid_blind.debug",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -26,6 +26,7 @@
     "appcenter-analytics": "^3.0.3",
     "appcenter-crashes": "^3.0.3",
     "babel-eslint": "^10.1.0",
+    "bugsnag-react-native": "2.23.9",
     "code-push": "^3.1.5",
     "code-push-cli": "^2.1.9",
     "eslint-plugin-react-hooks": "4.0.8",
@@ -98,5 +99,9 @@
       "json",
       "node"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Ssioo/skku_capstone_2020_2.git",
+  "author": "yeonwoo_sio <wooisso@naver.com>",
+  "license": "MIT"
 }

@@ -3,6 +3,7 @@ import {
   TransitionPresets,
 } from '@react-navigation/stack'
 import { HomeScreen } from 'screen/home'
+import React from 'react'
 
 const Stack = createStackNavigator()
 export const RootStack = () => (

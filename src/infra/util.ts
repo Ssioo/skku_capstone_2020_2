@@ -1,11 +1,8 @@
 import { Alert } from 'components/alert'
 import { Toast } from 'components/toast'
-import { isAOS, isIOS } from 'infra/constant'
-import { formatTs } from 'infra/format'
 // @ts-ignore
 import _isEqual from 'lodash.isequal'
 import { useCallback, useState } from 'react'
-import { Linking } from 'react-native'
 import { Confirm } from 'components/confirm'
 
 // https://github.com/mobxjs/mobx-react-lite/blob/master/src/utils.ts#L9
