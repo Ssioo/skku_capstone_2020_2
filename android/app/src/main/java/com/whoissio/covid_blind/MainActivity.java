@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "covid_blind";
+    return "skku_capstone_2020_2";
   }
 }
