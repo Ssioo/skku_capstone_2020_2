@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { StatusBar } from 'react-native'
-import { ApplicationProvider } from '@ui-kitten/components'
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
 import * as eva from '@eva-design/eva'
 import { NavigationContainer } from '@react-navigation/native'
 import SplashScreen from 'react-native-splash-screen'
@@ -13,6 +13,10 @@ import { Confirm } from 'components/confirm'
 import { LoadingIndicator } from 'components/loading-indicator'
 import { WARNING_WHITELIST } from 'infra/constant'
 import { mapping, theme } from 'infra/theme'
+import { RootDrawer } from 'navigators/drawer-stack'
+import { CovidIconsPack } from 'infra/icons'
+import { MaterialCommunityIconsPack, MaterialIconsPack } from 'infra/icon-pack'
+import { EvaIconsPack } from '@ui-kitten/eva-icons'
 
 export const App = () => {
   useEffect(() => {
@@ -26,13 +30,21 @@ export const App = () => {
   return (
     <>
       <StatusBar barStyle='dark-content' />
+      <IconRegistry
+        icons={[
+          CovidIconsPack,
+          MaterialIconsPack,
+          MaterialCommunityIconsPack,
+          EvaIconsPack,
+        ]}
+      />
       <ApplicationProvider
         {...eva}
         theme={{ ...eva.light, ...theme }}
         customMapping={mapping}
       >
         <NavigationContainer ref={_navigationRef}>
-          <RootStack />
+          <RootDrawer />
         </NavigationContainer>
       </ApplicationProvider>
       <Toast />
