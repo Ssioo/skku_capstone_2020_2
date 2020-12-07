@@ -12,6 +12,7 @@ import { observer } from 'mobx-react'
 import { noticeStore } from 'stores/notice'
 import { Notice } from 'models/Notice'
 import { COLOR } from 'infra/color'
+import { navigation } from 'infra/navigation'
 
 export const NoticeScreen = () => {
   useEffect(() => {
@@ -47,7 +48,13 @@ const NoticeList = observer(() => {
 })
 
 const NoticeItem: React.FC<{ notice: Notice }> = ({ notice }) => (
-  <TouchableOpacity style={{ paddingVertical: 12, paddingHorizontal: 20 }}>
+  <TouchableOpacity
+    style={{ paddingVertical: 12, paddingHorizontal: 20 }}
+    onPress={() => {
+      noticeStore.selectedNotice = notice
+      navigation.navigate('NoticeDetail')
+    }}
+  >
     <Text
       style={{
         fontSize: 14,

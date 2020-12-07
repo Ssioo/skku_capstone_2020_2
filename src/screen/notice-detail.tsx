@@ -18,8 +18,7 @@ export const NoticeDetailScreen = observer(() => {
         <Text>{noticeStore.selectedNotice?.title}</Text>
         <Text>{noticeStore.selectedNotice?.createdAt}</Text>
         <Text>{noticeStore.selectedNotice?.content}</Text>
-
-        </Layout>
+      </Layout>
     </SafeAreaView>
-
+  )
 })

@@ -9,6 +9,7 @@ import { HistoryScreen } from 'screen/history'
 import { NoticeScreen } from 'screen/notice'
 import { SettingsScreen } from 'screen/settings'
 import { PersonalNoticeScreen } from 'screen/personal-notice'
+import { NoticeDetailScreen } from 'screen/notice-detail'
 
 const Stack = createStackNavigator()
 export const RootStack = () => (
@@ -22,6 +23,7 @@ export const RootStack = () => (
     <Stack.Screen name='Home' component={HomeScreen} />
     <Stack.Screen name='History' component={HistoryScreen} />
     <Stack.Screen name='Notice' component={NoticeScreen} />
+    <Stack.Screen name='NoticeDetail' component={NoticeDetailScreen} />
     <Stack.Screen name='PersonalNotice' component={PersonalNoticeScreen} />
     <Stack.Screen name='Settings' component={SettingsScreen} />
   </Stack.Navigator>
