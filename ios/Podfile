@@ -22,12 +22,3 @@ target 'skku_capstone_2020_2' do
     flipper_post_install(installer)
   end
 end
-
-target 'skku_capstone_2020_2-tvOS' do
-  # Pods for skku_capstone_2020_2-tvOS
-
-  target 'skku_capstone_2020_2-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-end
