@@ -100,6 +100,7 @@ PODS:
     - React
   - JWT (3.0.0-beta.12):
     - Base64 (~> 1.1.2)
+  - NMapsMap (3.7.0)
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
@@ -279,6 +280,9 @@ PODS:
     - React
   - react-native-date-picker (3.0.2):
     - React
+  - react-native-nmap (0.0.55):
+    - NMapsMap (~> 3.7.0)
+    - React
   - react-native-safe-area-context (3.0.7):
     - React
   - react-native-slider (3.0.0):
@@ -415,6 +419,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
+  - react-native-nmap (from `../node_modules/react-native-nmap`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
@@ -456,6 +461,7 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - JWT
+    - NMapsMap
     - OpenSSL-Universal
     - SSZipArchive
     - YogaKit
@@ -507,6 +513,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-camera"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
+  react-native-nmap:
+    :path: "../node_modules/react-native-nmap"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-slider:
@@ -582,6 +590,7 @@ SPEC CHECKSUMS:
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   IamportReactNative: 8dde7f94cdb6875f1ba7456acfe7565455e705e0
   JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
+  NMapsMap: 46ce3d48d7976dd10c6ec63cd7eecf655a7dd955
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
   RCTRequired: 48884c74035a0b5b76dbb7a998bd93bcfc5f2047
   RCTTypeSafety: edf4b618033c2f1c5b7bc3d90d8e085ed95ba2ab
@@ -595,6 +604,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
   react-native-camera: eeb5b5f4ba4c1365fed3563af8a72007cbad7aab
   react-native-date-picker: aec68ba9b276beddd2cf941bd7cebf459ac9d301
+  react-native-nmap: ee0ca16795935627198bd0063b2e46061c9d4c78
   react-native-safe-area-context: ef6f16c66b0797ecae1bf86c103dfb3dc16fc33d
   react-native-slider: 12bd76d3d568c9c5500825db54123d44b48e4ad4
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
@@ -622,6 +632,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 8735f1b2f6032ff49c2a9c21db1b7e783fa51597
+PODFILE CHECKSUM: 7c86227529f5784036b04934270bc6ede09fce7e
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.2
