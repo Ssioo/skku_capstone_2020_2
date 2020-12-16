@@ -13,8 +13,17 @@ import moment from 'moment'
 import { navigation } from 'infra/navigation'
 import { toast } from 'infra/util'
 import { RefreshIcon } from 'infra/icons'
+import { BleManager } from 'react-native-ble-plx'
 
 export const HomeScreen = () => {
+  useEffect(() => {
+    const manager = initBleHandler()
+    return () => {
+      manager?.stopDeviceScan()
+      manager?.destroy()
+    }
+  }, [])
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <Layout
@@ -101,6 +110,22 @@ export const HomeScreen = () => {
   )
 }
 
+const initBleHandler = (): BleManager | null => {
+  try {
+    const bleManager = new BleManager()
+    bleManager.startDeviceScan(
+      null,
+      { allowDuplicates: true },
+      (error, device) => {
+        //console.log(device)
+      },
+    )
+    return bleManager
+  } catch (e) {
+    return null
+  }
+}
+
 const BtnRefresh = () => {
   return (
     <TouchableOpacity
@@ -124,6 +149,7 @@ const BtnRefresh = () => {
         shadowRadius: 12,
       }}
       onPress={() => {
+        initBleHandler()
         toast('Refreshed')
       }}
     >

@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react'
-import { StatusBar } from 'react-native'
+import {
+  DeviceEventEmitter,
+  NativeEventEmitter,
+  NativeModules,
+  StatusBar,
+} from 'react-native'
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
 import * as eva from '@eva-design/eva'
 import { NavigationContainer } from '@react-navigation/native'
@@ -27,6 +32,7 @@ export const App = () => {
       setIsNavigationReady(false)
     }
   }, [])
+
   return (
     <>
       <StatusBar barStyle='dark-content' />
