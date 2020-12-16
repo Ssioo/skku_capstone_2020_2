@@ -3,6 +3,7 @@ import React from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { COLOR } from 'infra/color'
 import { navigation } from 'infra/navigation'
+import { userStore } from 'stores/user'
 
 export const IntroScreen = () => {
   return (
@@ -45,28 +46,6 @@ export const IntroScreen = () => {
         >
           불필요한 QR코드 없이{'\n'}매장에 편리하게 방문하세요
         </Text>
-        <TouchableOpacity
-          style={{
-            position: 'absolute',
-            top: 60,
-            right: 20,
-            paddingVertical: 8,
-            paddingHorizontal: 12,
-          }}
-          onPress={() => {
-            navigation.navigate('StoreManage')
-          }}
-        >
-          <Text
-            style={{
-              color: COLOR.white,
-              fontSize: 14,
-              fontWeight: 'bold',
-            }}
-          >
-            사업장으로 계속하기
-          </Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.viewBottom}>
         <Text style={styles.desc}>
@@ -75,8 +54,9 @@ export const IntroScreen = () => {
         </Text>
         <TouchableOpacity
           style={styles.btnContainer}
-          onPress={() => {
-            navigation.setRoot('Home')
+          onPress={async () => {
+            const res = await userStore.trySign()
+            if (res) navigation.setRoot('Home')
           }}
         >
           <Text style={styles.btnText}>동의하고 계속하기</Text>

@@ -13,7 +13,7 @@ export interface NetworkMessage {
 }
 
 export class BaseApi {
-  get commonHeaders() {
+  protected get commonHeaders() {
     return {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ export class BaseApi {
     }
   }
 
-  async get(path: string): Promise<NetworkMessage> {
+  protected async get(path: string): Promise<NetworkMessage> {
     console.log(
       `GET ${SERVER_BASE_URL}${path}`,
       '\nheaders: ',
@@ -32,11 +32,15 @@ export class BaseApi {
       headers: this.commonHeaders,
     })
     const resJson = await res.json()
-    console.log(`GET ${SERVER_BASE_URL}${path}\n${JSON.stringify(resJson) ?? '[Undefined]'}`)
+    console.log(
+      `GET ${SERVER_BASE_URL}${path}\n${
+        JSON.stringify(resJson) ?? '[Undefined]'
+      }`,
+    )
     return resJson
   }
 
-  async post(path: string, body?: object): Promise<NetworkMessage> {
+  protected async post(path: string, body?: object): Promise<NetworkMessage> {
     console.log(
       `POST ${SERVER_BASE_URL}${path}`,
       '\nheaders: ',
@@ -50,11 +54,15 @@ export class BaseApi {
       body: JSON.stringify(body),
     })
     const resJson = await res.json()
-    console.log(`POST ${SERVER_BASE_URL}${path}\n${JSON.stringify(resJson) ?? '[Undefined]'}`)
+    console.log(
+      `POST ${SERVER_BASE_URL}${path}\n${
+        JSON.stringify(resJson) ?? '[Undefined]'
+      }`,
+    )
     return resJson
   }
 
-  async put(path: string, body: object): Promise<NetworkMessage> {
+  protected async put(path: string, body: object): Promise<NetworkMessage> {
     console.log(
       `PUT ${SERVER_BASE_URL}${path}`,
       '\nheaders: ',
@@ -70,7 +78,7 @@ export class BaseApi {
     return await res.json()
   }
 
-  async delete(path: string, body: object): Promise<NetworkMessage> {
+  protected async delete(path: string, body: object): Promise<NetworkMessage> {
     console.log(
       `DELETE ${SERVER_BASE_URL}${path}`,
       '\nheaders: ',

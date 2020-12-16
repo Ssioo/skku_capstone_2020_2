@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export type StorageKey = string
+export const USER_SIGNED: string = 'user.sign'
 
 export const storage = {
-  get: async (key: StorageKey) => {
+  get: async (key: string) => {
     try {
       return await AsyncStorage.getItem(key)
     } catch (e) {
@@ -11,14 +11,14 @@ export const storage = {
       return null
     }
   },
-  set: async (key: StorageKey, value: string) => {
+  set: async (key: string, value: string) => {
     try {
       await AsyncStorage.setItem(key, value)
     } catch (e) {
       console.log(e)
     }
   },
-  remove: async (key: StorageKey) => {
+  remove: async (key: string) => {
     try {
       await AsyncStorage.removeItem(key)
     } catch (e) {

@@ -16,22 +16,37 @@ import { Toast } from 'components/toast'
 import { Alert } from 'components/alert'
 import { Confirm } from 'components/confirm'
 import { LoadingIndicator } from 'components/loading-indicator'
-import { WARNING_WHITELIST } from 'infra/constant'
+import { isIOS, WARNING_WHITELIST } from 'infra/constant'
 import { mapping, theme } from 'infra/theme'
 import { RootDrawer } from 'navigators/drawer-stack'
 import { CovidIconsPack } from 'infra/icons'
 import { MaterialCommunityIconsPack, MaterialIconsPack } from 'infra/icon-pack'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
+import messaging from '@react-native-firebase/messaging'
+import {userStore} from "stores/user";
 
 export const App = () => {
   useEffect(() => {
     setIsNavigationReady(true)
     SplashScreen.hide()
+    initFCM()
+    const foregroundFCM = messaging().onMessage(async () => {})
     YellowBox.ignoreWarnings(WARNING_WHITELIST)
     return () => {
+      foregroundFCM()
       setIsNavigationReady(false)
     }
   }, [])
+
+  const initFCM = async () => {
+    if (isIOS) {
+      [
+        messaging.AuthorizationStatus.AUTHORIZED,
+        messaging.AuthorizationStatus.PROVISIONAL,
+      ].includes(await messaging().requestPermission())
+    }
+    await userStore.fetchUniqueIds()
+  }
 
   return (
     <>

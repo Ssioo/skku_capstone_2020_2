@@ -1,6 +1,6 @@
 import { BaseApi } from 'networks/base'
-import { Notice } from 'models/Notice'
 import { ApiError } from 'networks/error'
+import { Notice } from 'models/notice'
 
 class NoticeApi extends BaseApi {
   async getNotices(): Promise<Notice[]> {

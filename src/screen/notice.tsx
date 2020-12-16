@@ -10,9 +10,9 @@ import { Divider, Layout } from '@ui-kitten/components'
 import { TopNavBack } from 'components/top-nav'
 import { observer } from 'mobx-react'
 import { noticeStore } from 'stores/notice'
-import { Notice } from 'models/Notice'
 import { COLOR } from 'infra/color'
 import { navigation } from 'infra/navigation'
+import {Notice} from "models/notice";
 
 export const NoticeScreen = () => {
   useEffect(() => {

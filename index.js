@@ -4,9 +4,14 @@
 
 import { AppRegistry } from 'react-native'
 import { App } from './App'
+import React from 'react'
 import { name as appName } from './app.json'
+import messaging from '@react-native-firebase/messaging'
 
-let app = App
+messaging().setBackgroundMessageHandler(async (message) => {
+  console.log(message)
+})
+
 // enable codepush only in release
 /*if (!__DEV__) {
   app = codePush({
@@ -15,4 +20,10 @@ let app = App
     mandatoryInstallMode: codePush.InstallMode.IMMEDIATE,
   })(app)
 }*/
-AppRegistry.registerComponent(appName, () => app)
+
+const HeadlessCheck = ({ isHeadless }) => {
+  if (isHeadless) return null
+  return <App />
+}
+
+AppRegistry.registerComponent(appName, () => HeadlessCheck)

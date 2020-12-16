@@ -14,6 +14,7 @@ import { navigation } from 'infra/navigation'
 import { toast } from 'infra/util'
 import { RefreshIcon } from 'infra/icons'
 import { BleManager } from 'react-native-ble-plx'
+import { COLOR } from 'infra/color'
 
 export const HomeScreen = () => {
   useEffect(() => {
@@ -105,6 +106,28 @@ export const HomeScreen = () => {
           Powered by Sio. SKKU
         </Text>
         <BtnRefresh />
+        <TouchableOpacity
+          style={{
+            position: 'absolute',
+            top: 60,
+            right: 20,
+            paddingVertical: 8,
+            paddingHorizontal: 12,
+          }}
+          onPress={() => {
+            navigation.navigate('StoreManage')
+          }}
+        >
+          <Text
+            style={{
+              color: COLOR.white,
+              fontSize: 14,
+              fontWeight: 'bold',
+            }}
+          >
+            사업장으로 계속하기
+          </Text>
+        </TouchableOpacity>
       </Layout>
     </SafeAreaView>
   )
@@ -117,7 +140,10 @@ const initBleHandler = (): BleManager | null => {
       null,
       { allowDuplicates: true },
       (error, device) => {
-        //console.log(device)
+        if (!error) console.log(device?.id)
+        else {
+          console.log(error)
+        }
       },
     )
     return bleManager

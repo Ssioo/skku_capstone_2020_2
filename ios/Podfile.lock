@@ -398,6 +398,8 @@ PODS:
     - React
   - RNCPicker (1.8.0):
     - React-Core
+  - RNDeviceInfo (7.3.1):
+    - React-Core
   - RNFBAnalytics (10.2.0):
     - Firebase/Analytics (~> 7.2.0)
     - React-Core
@@ -482,6 +484,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNCPicker (from `../node_modules/@react-native-community/picker`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
@@ -593,6 +596,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNCPicker:
     :path: "../node_modules/@react-native-community/picker"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   RNFBAnalytics:
     :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
@@ -675,6 +680,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 05bae7ecfab1cbd5441993f1ca098f7c3b3f8d0e
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNCPicker: a724b3aa22b182697c190a8fd7b060b66119e136
+  RNDeviceInfo: 6ecb1d1c87d20e4c62354be0348de23362824dcd
   RNFBAnalytics: 1a476f7e82c7bc4c15df8bfe01be612e598f26d0
   RNFBApp: e3a0a4a783064c49764d1deb6ce61de5857c42ca
   RNFBMessaging: 0840c43afa4c5f2feb241d0aba9e398a79528fab

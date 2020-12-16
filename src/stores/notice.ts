@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx'
-import { Notice } from 'models/Notice'
 import { alert } from 'infra/util'
 import { noticeApi } from 'networks/notice'
+import { Notice } from 'models/notice'
 
 class NoticeStore {
   @observable notices: Notice[] = []
