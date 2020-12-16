@@ -1,8 +1,8 @@
 import { Dimensions, Platform } from 'react-native'
 
 export const SERVER_BASE_URL = !__DEV__
-  ? 'http://13.124.96.137/'
-  : 'http://13.124.96.137/' // TODO: 왼쪽에 실서버 주소로 바꿔줘야함.
+  ? 'http://13.124.96.137'
+  : 'http://13.124.96.137' // TODO: 왼쪽에 실서버 주소로 바꿔줘야함.
 
 export const WINDOW_WIDTH = Dimensions.get('window').width
 export const WINDOW_HEIGHT = Dimensions.get('window').height

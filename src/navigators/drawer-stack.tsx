@@ -10,10 +10,17 @@ import { COLOR } from 'infra/color'
 import { StyleSheet } from 'react-native'
 import { navigation } from 'infra/navigation'
 import React from 'react'
+import { userStore } from 'stores/user'
 
 const Drawer = createDrawerNavigator()
 export const RootDrawer = observer(() => {
-  useEffect(() => {}, [])
+  useEffect(() => {
+    userStore.fetchUniqueIds().then(() => {
+      userStore.trySign().then((res) => {
+        if (res) navigation.setRoot('Home')
+      })
+    })
+  })
 
   return (
     <Drawer.Navigator

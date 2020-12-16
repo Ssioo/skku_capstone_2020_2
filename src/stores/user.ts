@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx'
-import {getPhoneNumber, getUniqueId} from 'react-native-device-info'
+import { getPhoneNumber, getUniqueId } from 'react-native-device-info'
 import messaging from '@react-native-firebase/messaging'
 import { alert } from 'infra/util'
 import { userApi } from 'networks/user'
@@ -14,7 +14,7 @@ class UserStore {
   async fetchUniqueIds() {
     this.fcmToken = await messaging().getToken()
     this.uniqueId = getUniqueId()
-    this.phone = await getPhoneNumber()
+    this.phone = await getPhoneNumber() // Only for Android (Optional)
   }
 
   @action

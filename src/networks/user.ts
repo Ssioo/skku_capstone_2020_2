@@ -10,6 +10,14 @@ class UserApi extends BaseApi {
 
   async getHistory() {
     const res = await this.get('/user/history')
+    if (res.status !== 200) throw new ApiError(res)
+    return res.data
+  }
+
+  async checkIn(storeId: number) {
+    const res = await this.post(`/check/in/${storeId}`, {
+
+    })
   }
 }
 

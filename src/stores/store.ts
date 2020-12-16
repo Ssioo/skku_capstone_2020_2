@@ -14,21 +14,15 @@ class StoreStore {
   }
 
   @action
-    async registerStore(id: string, pwd: string) {
-      try {
-
-      } catch (e) {
-
-      }
+  async registerStore(id: string, pwd: string) {
+    try {
+    } catch (e) {}
   }
 
   @action
-    async signInStore(id: string, pwd: string) {
-      try {
-
-      } catch (e) {
-
-      }
+  async signInStore(id: string, pwd: string) {
+    try {
+    } catch (e) {}
   }
 }
 

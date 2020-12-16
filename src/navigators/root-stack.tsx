@@ -15,12 +15,7 @@ import { observer } from 'mobx-react'
 import { userStore } from 'stores/user'
 
 const Stack = createStackNavigator()
-export const RootStack = observer(() => {
-  useEffect(() => {
-    userStore.fetchUniqueIds().then(() => {
-      userStore.trySign()
-    })
-  })
+export const RootStack = () => {
   return (
     <Stack.Navigator
       screenOptions={() => ({
@@ -38,4 +33,4 @@ export const RootStack = observer(() => {
       <Stack.Screen name='Settings' component={SettingsScreen} />
     </Stack.Navigator>
   )
-})
+}

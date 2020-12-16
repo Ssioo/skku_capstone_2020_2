@@ -1,11 +1,8 @@
-import {action} from "mobx";
+import { action } from 'mobx'
 
 class CheckStore {
-
-    @action
-    async tryCheckIn(storeId: number) {
-
-    }
+  @action
+  async tryCheckIn(storeId: number) {}
 }
 
 export const checkStore = new CheckStore()

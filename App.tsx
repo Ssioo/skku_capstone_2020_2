@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react'
 import {
-  DeviceEventEmitter,
-  NativeEventEmitter,
-  NativeModules,
   StatusBar,
 } from 'react-native'
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
@@ -10,7 +7,6 @@ import * as eva from '@eva-design/eva'
 import { NavigationContainer } from '@react-navigation/native'
 import SplashScreen from 'react-native-splash-screen'
 import { YellowBox } from 'react-native'
-import { RootStack } from 'navigators/root-stack'
 import { setIsNavigationReady, _navigationRef } from 'infra/navigation'
 import { Toast } from 'components/toast'
 import { Alert } from 'components/alert'
@@ -23,7 +19,7 @@ import { CovidIconsPack } from 'infra/icons'
 import { MaterialCommunityIconsPack, MaterialIconsPack } from 'infra/icon-pack'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import messaging from '@react-native-firebase/messaging'
-import {userStore} from "stores/user";
+import { userStore } from 'stores/user'
 
 export const App = () => {
   useEffect(() => {

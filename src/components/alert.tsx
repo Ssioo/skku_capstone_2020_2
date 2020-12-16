@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native'
 import { theme } from 'infra/theme'
+import {formatErrorToString} from "infra/formatter";
 
 export class Alert extends React.Component<any, any> {
   static instance: Alert
@@ -26,8 +27,8 @@ export class Alert extends React.Component<any, any> {
     this._hide = this._hide.bind(this)
   }
 
-  static show(content: string, title?: string, callback?: Function) {
-    Alert.instance?._show(content, title, callback)
+  static show(content: string | Error, title?: string, callback?: Function) {
+    Alert.instance?._show(formatErrorToString(content), title, callback)
   }
 
   _show(content: string, title?: string, callback?: Function) {
