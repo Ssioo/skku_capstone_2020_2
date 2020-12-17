@@ -23,6 +23,8 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import messaging from '@react-native-firebase/messaging'
 import { userStore } from 'stores/user'
 import PushNotification from 'react-native-push-notification'
+import { appStore } from 'stores/app'
+import { Push } from 'components/push'
 
 export const App = () => {
   useEffect(() => {
@@ -31,6 +33,7 @@ export const App = () => {
     initFCM()
     const foregroundFCM = messaging().onMessage(async (message) => {
       console.log(message)
+      Push.show(message.data?.title ?? '', message.data?.body ?? '')
       PushNotification.localNotification({
         channelId: 'covid',
         vibration: 500,
@@ -80,6 +83,7 @@ export const App = () => {
       <Toast />
       <Alert />
       <Confirm />
+      <Push />
       <LoadingIndicator />
     </>
   )
