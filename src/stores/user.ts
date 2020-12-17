@@ -5,11 +5,14 @@ import { alert } from 'infra/util'
 import { userApi } from 'networks/user'
 import { USER_SIGNED, storage } from 'infra/storage'
 import { isIOS } from 'infra/constant'
+import moment from 'moment'
 
 class UserStore {
   @observable uniqueId: string | null = null
   @observable fcmToken: string | null = null
   @observable isSigned: string | null = null
+  @observable history: any[] = []
+  @observable selectedDate: moment.Moment = moment()
 
   @action
   async fetchUniqueIds() {
@@ -42,6 +45,15 @@ class UserStore {
   @action
   async tryLogout() {
     await storage.remove(USER_SIGNED)
+  }
+
+  @action
+  async fetchHistory() {
+    try {
+      this.history = await userApi.getHistory()
+    } catch (e) {
+      alert(e)
+    }
   }
 }
 

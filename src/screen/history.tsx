@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout } from '@ui-kitten/components'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { TopNavBack } from 'components/top-nav'
@@ -7,37 +7,46 @@ import moment from 'moment'
 import { COLOR } from 'infra/color'
 import { ChevronLeft } from '@ui-kitten/components/ui/shared/chevronLeft.component'
 import { ChevronRight } from '@ui-kitten/components/ui/shared/chevronRight.component'
+import { userStore } from 'stores/user'
+import { observer } from 'mobx-react'
 
 export const HistoryScreen = () => {
+  useEffect(() => {
+    userStore.fetchHistory()
+  }, [])
   return (
     <Layout style={{ flex: 1, backgroundColor: '#fff' }}>
       <TopNavBack title='내 기록' />
       <Layout style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
-          <NaverMapView
-            style={{ flex: 1 }}
-            onInitialized={() => {}}
-            onCameraChange={() => {}}
-            zoomControl={false}
-            showsMyLocationButton
-          />
-        </View>
+        <MapView />
         <DateSelectButton />
       </Layout>
     </Layout>
   )
 }
 
+const MapView = observer(() => (
+  <View style={{ flex: 1 }}>
+    <NaverMapView
+      style={{ flex: 1 }}
+      onInitialized={() => {}}
+      onCameraChange={() => {}}
+      zoomControl={false}
+      showsMyLocationButton
+    />
+  </View>
+))
+
 const DateSelectButton = () => {
-  const [today, setToday] = useState<moment.Moment>(moment())
   return (
     <View style={styles.dateContainer}>
       <TouchableOpacity
         hitSlop={{ left: 10, top: 10, bottom: 10, right: 10 }}
         onPress={() => {
-          if (today.isSame(moment().add(-28, 'day'), 'day')) return
-          const newDate = today.add(-1, 'day')
-          setToday(moment(newDate))
+          if (userStore.selectedDate.isSame(moment().add(-28, 'day'), 'day'))
+            return
+          const newDate = userStore.selectedDate.add(-1, 'day')
+          userStore.selectedDate = moment(newDate)
         }}
       >
         <ChevronLeft width={24} height={24} fill={COLOR.dark} />
@@ -50,14 +59,14 @@ const DateSelectButton = () => {
           marginHorizontal: 10,
         }}
       >
-        {formatToday(today)}
+        {formatToday(userStore.selectedDate)}
       </Text>
       <TouchableOpacity
         hitSlop={{ left: 10, top: 10, bottom: 10, right: 10 }}
         onPress={() => {
-          if (today.isSame(moment(), 'day')) return
-          const newDate = today.add(1, 'day')
-          setToday(moment(newDate))
+          if (userStore.selectedDate.isSame(moment(), 'day')) return
+          const newDate = userStore.selectedDate.add(1, 'day')
+          userStore.selectedDate = moment(newDate)
         }}
       >
         <ChevronRight width={24} height={24} fill={COLOR.dark} />

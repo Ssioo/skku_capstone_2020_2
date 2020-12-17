@@ -7,7 +7,7 @@ class UserApi extends BaseApi {
     if (res.status !== 200 && res.status !== 201) throw new ApiError(res)
     return res.data
   }
-  async getHistory() {
+  async getHistory(): Promise<any[]> {
     const res = await this.get('/user/history')
     if (res.status !== 200) throw new ApiError(res)
     return res.data
