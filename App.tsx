@@ -5,7 +5,11 @@ import * as eva from '@eva-design/eva'
 import { NavigationContainer } from '@react-navigation/native'
 import SplashScreen from 'react-native-splash-screen'
 import { YellowBox } from 'react-native'
-import { setIsNavigationReady, _navigationRef } from 'infra/navigation'
+import {
+  setIsNavigationReady,
+  _navigationRef,
+  navigation,
+} from 'infra/navigation'
 import { Toast } from 'components/toast'
 import { Alert } from 'components/alert'
 import { Confirm } from 'components/confirm'
@@ -18,6 +22,7 @@ import { MaterialCommunityIconsPack, MaterialIconsPack } from 'infra/icon-pack'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import messaging from '@react-native-firebase/messaging'
 import { userStore } from 'stores/user'
+import PushNotification from 'react-native-push-notification'
 
 export const App = () => {
   useEffect(() => {
@@ -26,6 +31,13 @@ export const App = () => {
     initFCM()
     const foregroundFCM = messaging().onMessage(async (message) => {
       console.log(message)
+      PushNotification.localNotification({
+        channelId: 'covid',
+        vibration: 500,
+        ignoreInForeground: false,
+        title: message.data?.title,
+        message: message.data?.body,
+      })
     })
     YellowBox.ignoreWarnings(WARNING_WHITELIST)
     return () => {
@@ -36,10 +48,11 @@ export const App = () => {
 
   const initFCM = async () => {
     if (isIOS) {
-      [
+      const requP = await messaging().requestPermission()
+      const permission = [
         messaging.AuthorizationStatus.AUTHORIZED,
         messaging.AuthorizationStatus.PROVISIONAL,
-      ].includes(await messaging().requestPermission())
+      ].includes(requP)
     }
     await userStore.fetchUniqueIds()
   }
