@@ -14,16 +14,23 @@ import { navigation } from 'infra/navigation'
 import { toast } from 'infra/util'
 import { RefreshIcon } from 'infra/icons'
 import { BleManager } from 'react-native-ble-plx'
-import { COLOR } from 'infra/color'
+import { storeStore } from 'stores/store'
 
 export const HomeScreen = () => {
   useEffect(() => {
-    const manager = initBleHandler()
+    const manager = initStores()
     return () => {
-      manager?.stopDeviceScan()
-      manager?.destroy()
+      manager.then((m) => {
+        m?.stopDeviceScan()
+        m?.destroy()
+      })
     }
   }, [])
+
+  const initStores = async (): Promise<BleManager | null> => {
+    await storeStore.fetchStores()
+    return initBleHandler()
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -109,18 +116,18 @@ export const HomeScreen = () => {
         <TouchableOpacity
           style={{
             position: 'absolute',
-            top: 60,
+            top: 26,
             right: 20,
             paddingVertical: 8,
             paddingHorizontal: 12,
           }}
           onPress={() => {
-            navigation.navigate('StoreManage')
+            navigation.navigate('StoreSignIn')
           }}
         >
           <Text
             style={{
-              color: COLOR.white,
+              color: '#333',
               fontSize: 14,
               fontWeight: 'bold',
             }}
@@ -174,7 +181,8 @@ const BtnRefresh = () => {
         shadowOpacity: 1,
         shadowRadius: 12,
       }}
-      onPress={() => {
+      onPress={async () => {
+        await storeStore.fetchStores()
         initBleHandler()
         toast('Refreshed')
       }}

@@ -321,6 +321,8 @@ PODS:
     - React
   - react-native-date-picker (3.0.2):
     - React
+  - react-native-get-random-values (1.5.0):
+    - React
   - react-native-nmap (0.0.55):
     - NMapsMap (~> 3.7.0)
     - React
@@ -466,6 +468,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-ble-plx (from `../node_modules/react-native-ble-plx`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
+  - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-nmap (from `../node_modules/react-native-nmap`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
@@ -560,6 +563,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-ble-plx"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
+  react-native-get-random-values:
+    :path: "../node_modules/react-native-get-random-values"
   react-native-nmap:
     :path: "../node_modules/react-native-nmap"
   react-native-safe-area-context:
@@ -662,6 +667,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
   react-native-ble-plx: caac53ee98151ec81198239d591c203809a1ed6e
   react-native-date-picker: aec68ba9b276beddd2cf941bd7cebf459ac9d301
+  react-native-get-random-values: 1404bd5cc0ab0e287f75ee1c489555688fc65f89
   react-native-nmap: ee0ca16795935627198bd0063b2e46061c9d4c78
   react-native-safe-area-context: ef6f16c66b0797ecae1bf86c103dfb3dc16fc33d
   react-native-slider: 12bd76d3d568c9c5500825db54123d44b48e4ad4

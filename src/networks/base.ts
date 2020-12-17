@@ -9,7 +9,7 @@ export const setToken = (t: string | null) => {
 export interface NetworkMessage {
   status: number
   data?: any
-  msg?: string
+  message?: string
 }
 
 export class BaseApi {

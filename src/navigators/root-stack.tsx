@@ -10,9 +10,7 @@ import { NoticeScreen } from 'screen/notice'
 import { SettingsScreen } from 'screen/settings'
 import { PersonalNoticeScreen } from 'screen/personal-notice'
 import { NoticeDetailScreen } from 'screen/notice-detail'
-import { StoreManageScreen } from 'screen/store-manage'
-import { observer } from 'mobx-react'
-import { userStore } from 'stores/user'
+import { StoreSignInScreen } from 'screen/store-signin'
 
 const Stack = createStackNavigator()
 export const RootStack = () => {
@@ -25,7 +23,7 @@ export const RootStack = () => {
     >
       <Stack.Screen name='Intro' component={IntroScreen} />
       <Stack.Screen name='Home' component={HomeScreen} />
-      <Stack.Screen name='StoreManage' component={StoreManageScreen} />
+      <Stack.Screen name='StoreSignIn' component={StoreSignInScreen} />
       <Stack.Screen name='History' component={HistoryScreen} />
       <Stack.Screen name='Notice' component={NoticeScreen} />
       <Stack.Screen name='NoticeDetail' component={NoticeDetailScreen} />

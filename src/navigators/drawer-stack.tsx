@@ -15,7 +15,8 @@ import { userStore } from 'stores/user'
 const Drawer = createDrawerNavigator()
 export const RootDrawer = observer(() => {
   useEffect(() => {
-    userStore.fetchUniqueIds().then(() => {
+    userStore.fetchUniqueIds().then((r) => {
+      if (!r) return
       userStore.trySign().then((res) => {
         if (res) navigation.setRoot('Home')
       })

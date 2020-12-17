@@ -10,8 +10,31 @@ class StoreApi extends BaseApi {
     return res.data
   }
 
-  async registerStore(id: string, pwd: string, name: string, latLng: LatLng) {
-    const res = await this.post('/stores')
+  async registerStore(
+    id: string,
+    pwd: string,
+    name: string,
+    latLng: LatLng,
+    address: string,
+    uuid: string,
+  ) {
+    const res = await this.post('/stores/register', {
+      id,
+      pwd,
+      name,
+      latLng,
+      address,
+      uuid,
+    })
+    if (res.status !== 200) throw new ApiError(res)
+    return res.data
+  }
+
+  async loginStore(id: string, pwd: string) {
+    const res = await this.post('/stores/login', {
+      id,
+      pwd,
+    })
     if (res.status !== 200) throw new ApiError(res)
     return res.data
   }
