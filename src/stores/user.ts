@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx'
+import { action, computed, observable } from 'mobx'
 import { getUniqueId } from 'react-native-device-info'
 import messaging from '@react-native-firebase/messaging'
 import { alert } from 'infra/util'
@@ -13,6 +13,12 @@ class UserStore {
   @observable isSigned: string | null = null
   @observable history: any[] = []
   @observable selectedDate: moment.Moment = moment()
+
+  @computed get historyOnSelectedDate() {
+    return this.history.filter((h) =>
+      moment(h.createdAt).isSame(this.selectedDate, 'd'),
+    )
+  }
 
   @action
   async fetchUniqueIds() {

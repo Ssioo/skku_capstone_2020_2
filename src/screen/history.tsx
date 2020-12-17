@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Layout } from '@ui-kitten/components'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { TopNavBack } from 'components/top-nav'
-import NaverMapView from 'react-native-nmap'
+import NaverMapView, { Marker } from 'react-native-nmap'
 import moment from 'moment'
 import { COLOR } from 'infra/color'
 import { ChevronLeft } from '@ui-kitten/components/ui/shared/chevronLeft.component'
@@ -33,7 +33,17 @@ const MapView = observer(() => (
       onCameraChange={() => {}}
       zoomControl={false}
       showsMyLocationButton
-    />
+    >
+      {userStore.history?.map((h) => (
+        <Marker
+          key={h.id}
+          coordinate={{ ...h.latLng }}
+          image={require('../images/marker1.png')}
+          width={40}
+          height={50}
+        />
+      ))}
+    </NaverMapView>
   </View>
 ))
 
