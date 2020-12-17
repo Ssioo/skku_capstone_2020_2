@@ -15,14 +15,15 @@ import 'react-native-get-random-values'
 import { v4 } from 'uuid'
 import { navigation } from 'infra/navigation'
 import { observer } from 'mobx-react'
+import { toast } from 'infra/util'
 
 export const StoreSignInScreen = () => {
   useEffect(() => {}, [])
 
-  const [id, setId] = useState('')
+  const [phone, setPhone] = useState('')
   const [pwd, setPwd] = useState('')
   const [name, setName] = useState('')
-  const bleUUID = useState(v4())
+  const [bleUUID, setBleUUID] = useState(v4())
   const [isSignUp, setIsSignUp] = useState(false)
 
   return (
@@ -30,12 +31,12 @@ export const StoreSignInScreen = () => {
       <TopNavBack title='사업장 로그인' />
       <Layout style={{ flex: 1, paddingVertical: 20 }}>
         <ScrollView keyboardDismissMode='interactive'>
-          <Text style={styles.inputDesc}>아이디</Text>
+          <Text style={styles.inputDesc}>매장 전화번호(아이디)</Text>
           <TextInput
             style={styles.input}
             keyboardType='default'
-            value={id}
-            onChangeText={setId}
+            value={phone}
+            onChangeText={setPhone}
           />
           <Text style={styles.inputDesc}>비밀번호</Text>
           <TextInput
@@ -72,8 +73,10 @@ export const StoreSignInScreen = () => {
                 borderRadius: 10,
               }}
               onPress={async () => {
-                const res = await storeStore.signInStore(id, pwd)
+                const res = await storeStore.signInStore(phone, pwd)
                 if (res) {
+                  toast('환영합니다.')
+                  navigation.setRoot('StoreManage')
                 }
               }}
             >
@@ -96,11 +99,17 @@ export const StoreSignInScreen = () => {
                 setIsSignUp(true)
               } else {
                 const res = await storeStore.registerStore(
-                  id,
+                  phone,
                   pwd,
                   name,
                   bleUUID,
                 )
+                if (res) {
+                  toast(
+                    '매장 등록이 성공하였습니다. 매장 관리 페이지로 이동합니다.',
+                  )
+                  navigation.setRoot('StoreManage')
+                }
               }
             }}
           >

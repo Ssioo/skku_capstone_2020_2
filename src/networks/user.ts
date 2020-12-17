@@ -13,10 +13,12 @@ class UserApi extends BaseApi {
     return res.data
   }
 
-  async checkIn(storeId: number) {
+  async checkIn(storeId: number, uuid: string) {
     const res = await this.post(`/check/in/${storeId}`, {
-
+      uuid,
     })
+    if (res.status !== 200) throw new ApiError(res)
+    return res.data
   }
 }
 

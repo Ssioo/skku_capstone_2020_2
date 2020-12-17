@@ -15,8 +15,12 @@ import { toast } from 'infra/util'
 import { RefreshIcon } from 'infra/icons'
 import { BleManager } from 'react-native-ble-plx'
 import { storeStore } from 'stores/store'
+import { checkStore } from 'stores/check'
+import { userStore } from 'stores/user'
+import { COLOR } from 'infra/color'
+import { observer } from 'mobx-react'
 
-export const HomeScreen = () => {
+export const HomeScreen = observer(() => {
   useEffect(() => {
     const manager = initStores()
     return () => {
@@ -63,7 +67,9 @@ export const HomeScreen = () => {
           style={{
             width: '60%',
             aspectRatio: 1,
-            backgroundColor: '#f2f2f2',
+            backgroundColor: !storeStore.discoveredStore
+              ? '#f2f2f2'
+              : COLOR.primary,
             borderRadius: 400,
             elevation: 2,
             shadowColor: 'rgba(0,0,0,0.16)',
@@ -74,7 +80,13 @@ export const HomeScreen = () => {
             shadowRadius: 12,
             shadowOpacity: 1,
           }}
-          onPress={() => {
+          disabled={!storeStore.discoveredStore}
+          onPress={async () => {
+            if (!storeStore.discoveredStore) return
+            await checkStore.tryCheckIn(
+              storeStore.discoveredStore?.id!!,
+              userStore.uniqueId!!,
+            )
             toast('체크인 되었습니다.')
           }}
         >
@@ -91,9 +103,9 @@ export const HomeScreen = () => {
             <Text
               style={{
                 textAlign: 'center',
-                fontSize: 44,
+                fontSize: 40,
                 fontWeight: 'bold',
-                color: '#e5e5e5',
+                color: !storeStore.discoveredStore ? '#e5e5e5' : COLOR.primary,
                 includeFontPadding: false,
               }}
             >
@@ -138,17 +150,21 @@ export const HomeScreen = () => {
       </Layout>
     </SafeAreaView>
   )
-}
+})
 
 const initBleHandler = (): BleManager | null => {
   try {
     const bleManager = new BleManager()
     bleManager.startDeviceScan(
-      null,
+      storeStore.visibleStoreUUIDs,
       { allowDuplicates: true },
       (error, device) => {
-        if (!error) console.log(device?.id)
-        else {
+        if (!error) {
+          storeStore.discoveredStore =
+            storeStore.stores.find((s) =>
+              device?.serviceUUIDs?.includes(s.uuid),
+            ) ?? null
+        } else {
           console.log(error)
         }
       },

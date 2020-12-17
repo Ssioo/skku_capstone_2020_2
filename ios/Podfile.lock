@@ -316,6 +316,8 @@ PODS:
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
   - React-jsinspector (0.63.3)
+  - react-native-ble-advertiser (0.0.16):
+    - React
   - react-native-ble-plx (2.0.2):
     - MultiplatformBleAdapter (= 0.1.7)
     - React
@@ -400,6 +402,8 @@ PODS:
     - React
   - RNCPicker (1.8.0):
     - React-Core
+  - RNCPushNotificationIOS (1.8.0):
+    - React-Core
   - RNDeviceInfo (7.3.1):
     - React-Core
   - RNFBAnalytics (10.2.0):
@@ -466,6 +470,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-ble-advertiser (from `../node_modules/react-native-ble-advertiser/ios`)
   - react-native-ble-plx (from `../node_modules/react-native-ble-plx`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
@@ -487,6 +492,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNCPicker (from `../node_modules/@react-native-community/picker`)"
+  - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
@@ -559,6 +565,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-ble-advertiser:
+    :path: "../node_modules/react-native-ble-advertiser/ios"
   react-native-ble-plx:
     :path: "../node_modules/react-native-ble-plx"
   react-native-date-picker:
@@ -601,6 +609,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNCPicker:
     :path: "../node_modules/@react-native-community/picker"
+  RNCPushNotificationIOS:
+    :path: "../node_modules/@react-native-community/push-notification-ios"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNFBAnalytics:
@@ -665,6 +675,7 @@ SPEC CHECKSUMS:
   React-jsi: df07aa95b39c5be3e41199921509bfa929ed2b9d
   React-jsiexecutor: b56c03e61c0dd5f5801255f2160a815f4a53d451
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
+  react-native-ble-advertiser: 3d210079cf12ae287e8762228f564168636edde7
   react-native-ble-plx: caac53ee98151ec81198239d591c203809a1ed6e
   react-native-date-picker: aec68ba9b276beddd2cf941bd7cebf459ac9d301
   react-native-get-random-values: 1404bd5cc0ab0e287f75ee1c489555688fc65f89
@@ -686,6 +697,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 05bae7ecfab1cbd5441993f1ca098f7c3b3f8d0e
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNCPicker: a724b3aa22b182697c190a8fd7b060b66119e136
+  RNCPushNotificationIOS: 61a7c72bd1ebad3568025957d001e0f0e7b32191
   RNDeviceInfo: 6ecb1d1c87d20e4c62354be0348de23362824dcd
   RNFBAnalytics: 1a476f7e82c7bc4c15df8bfe01be612e598f26d0
   RNFBApp: e3a0a4a783064c49764d1deb6ce61de5857c42ca

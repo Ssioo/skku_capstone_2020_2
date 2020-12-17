@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
-import {
-  StatusBar,
-} from 'react-native'
+import { StatusBar } from 'react-native'
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
 import * as eva from '@eva-design/eva'
 import { NavigationContainer } from '@react-navigation/native'
@@ -26,7 +24,9 @@ export const App = () => {
     setIsNavigationReady(true)
     SplashScreen.hide()
     initFCM()
-    const foregroundFCM = messaging().onMessage(async () => {})
+    const foregroundFCM = messaging().onMessage(async (message) => {
+      console.log(message)
+    })
     YellowBox.ignoreWarnings(WARNING_WHITELIST)
     return () => {
       foregroundFCM()
