@@ -1,5 +1,5 @@
-import {action, computed, observable} from 'mobx'
-import { DiscoveredStore, Store } from 'models/store'
+import { action, computed, observable } from 'mobx'
+import { Store } from 'models/store'
 import { storeApi } from 'networks/store'
 import { alert } from 'infra/util'
 import { LatLng } from 'models/history'

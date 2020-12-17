@@ -12,6 +12,7 @@ import { Layout } from '@ui-kitten/components'
 import { COLOR } from 'infra/color'
 import { storeStore } from 'stores/store'
 import 'react-native-get-random-values'
+// @ts-ignore
 import { v4 } from 'uuid'
 import { navigation } from 'infra/navigation'
 import { observer } from 'mobx-react'

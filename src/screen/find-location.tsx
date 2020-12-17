@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import NaverMapView from 'react-native-nmap'
 import {
   Image,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,

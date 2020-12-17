@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native'
 import { theme } from 'infra/theme'
-import {formatErrorToString} from "infra/formatter";
+import { formatErrorToString } from 'infra/formatter'
 
 export class Alert extends React.Component<any, any> {
   static instance: Alert

@@ -61,7 +61,7 @@ export const HomeScreen = observer(() => {
             fontWeight: 'bold',
           }}
         >
-          근처 매장 없음
+          {storeStore.discoveredStore?.name ?? '근처 매장 없음'}
         </Text>
         <TouchableOpacity
           style={{

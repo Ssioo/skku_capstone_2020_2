@@ -8,7 +8,7 @@ class StoreApi extends BaseApi {
     const res = await this.get('/store')
     if (res.status !== 200) throw new ApiError(res)
     return res.data.map(
-      (d) =>
+      (d: any) =>
         <Store>{
           id: d.id,
           name: d.name,
@@ -42,7 +42,7 @@ class StoreApi extends BaseApi {
     return res.data
   }
 
-  async loginStore(phone: string, pwd: string) {
+  async loginStore(phone: string, pwd: string): Promise<Store> {
     const res = await this.post('/store/login', {
       phone,
       pwd,

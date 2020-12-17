@@ -5,14 +5,25 @@ import { Notice } from 'models/notice'
 
 class NoticeStore {
   @observable notices: Notice[] = []
+  @observable personalNotices: Notice[] = []
   @observable selectedNotice: Notice | null = null
+  @observable selectedPersonalNotice: Notice | null = null
 
   @action
   async fetchNotices() {
     try {
       this.notices = await noticeApi.getNotices()
     } catch (e) {
-      alert(e.message)
+      alert(e)
+    }
+  }
+
+  @action
+  async fetchPersonalNotices() {
+    try {
+      this.personalNotices = await noticeApi.getNotices()
+    } catch (e) {
+      alert(e)
     }
   }
 }
