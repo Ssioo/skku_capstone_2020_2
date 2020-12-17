@@ -8,6 +8,9 @@ class StoreStore {
   @observable stores: Store[] = []
   @observable discoveredStore: DiscoveredStore | null = null
 
+  @observable newStoreAddress: string | null = null
+  @observable newStoreLatLng: LatLng | null = null
+
   @action
   async fetchStores() {
     try {
@@ -20,12 +23,18 @@ class StoreStore {
     id: string,
     pwd: string,
     name: string,
-    latLng: LatLng,
-    address: string,
     uuid: string,
   ) {
+    if (!this.newStoreLatLng || !this.newStoreAddress) return
     try {
-      return await storeApi.registerStore(id, pwd, name, latLng, address, uuid)
+      return await storeApi.registerStore(
+        id,
+        pwd,
+        name,
+        this.newStoreLatLng,
+        this.newStoreAddress,
+        uuid,
+      )
     } catch (e) {
       alert(e)
     }

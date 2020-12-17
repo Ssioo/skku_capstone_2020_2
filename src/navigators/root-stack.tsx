@@ -11,6 +11,7 @@ import { SettingsScreen } from 'screen/settings'
 import { PersonalNoticeScreen } from 'screen/personal-notice'
 import { NoticeDetailScreen } from 'screen/notice-detail'
 import { StoreSignInScreen } from 'screen/store-signin'
+import { FindLocationScreen } from 'screen/find-location'
 
 const Stack = createStackNavigator()
 export const RootStack = () => {
@@ -24,6 +25,7 @@ export const RootStack = () => {
       <Stack.Screen name='Intro' component={IntroScreen} />
       <Stack.Screen name='Home' component={HomeScreen} />
       <Stack.Screen name='StoreSignIn' component={StoreSignInScreen} />
+      <Stack.Screen name='FindLocation' component={FindLocationScreen} />
       <Stack.Screen name='History' component={HistoryScreen} />
       <Stack.Screen name='Notice' component={NoticeScreen} />
       <Stack.Screen name='NoticeDetail' component={NoticeDetailScreen} />

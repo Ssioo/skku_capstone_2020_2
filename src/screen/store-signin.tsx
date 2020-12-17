@@ -13,6 +13,8 @@ import { COLOR } from 'infra/color'
 import { storeStore } from 'stores/store'
 import 'react-native-get-random-values'
 import { v4 } from 'uuid'
+import { navigation } from 'infra/navigation'
+import { observer } from 'mobx-react'
 
 export const StoreSignInScreen = () => {
   useEffect(() => {}, [])
@@ -20,8 +22,7 @@ export const StoreSignInScreen = () => {
   const [id, setId] = useState('')
   const [pwd, setPwd] = useState('')
   const [name, setName] = useState('')
-  const [address, setAddress] = useState('')
-  const [bleUUID, setBleUUID] = useState(v4())
+  const bleUUID = useState(v4())
   const [isSignUp, setIsSignUp] = useState(false)
 
   return (
@@ -54,14 +55,7 @@ export const StoreSignInScreen = () => {
                 value={name}
                 onChangeText={setName}
               />
-              <Text style={styles.inputDesc}>매장 주소</Text>
-              <TextInput
-                style={styles.input}
-                keyboardType='default'
-                textContentType='name'
-                value={address}
-                onChangeText={setAddress}
-              />
+              <AddressView />
               <Text style={styles.inputDesc}>고유 ID 생성</Text>
               <Text style={styles.input}>{bleUUID}</Text>
             </>
@@ -79,6 +73,8 @@ export const StoreSignInScreen = () => {
               }}
               onPress={async () => {
                 const res = await storeStore.signInStore(id, pwd)
+                if (res) {
+                }
               }}
             >
               <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
@@ -103,8 +99,6 @@ export const StoreSignInScreen = () => {
                   id,
                   pwd,
                   name,
-                  { latitude: 23, longitude: 23 },
-                  address,
                   bleUUID,
                 )
               }
@@ -125,6 +119,19 @@ export const StoreSignInScreen = () => {
     </SafeAreaView>
   )
 }
+
+const AddressView = observer(() => (
+  <>
+    <Text style={styles.inputDesc}>매장 주소</Text>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('FindLocation')
+      }}
+    >
+      <Text style={styles.input}>{storeStore.newStoreAddress}</Text>
+    </TouchableOpacity>
+  </>
+))
 
 const styles = StyleSheet.create({
   inputDesc: {
