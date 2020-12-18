@@ -199,6 +199,7 @@ const BtnRefresh = () => {
       }}
       onPress={async () => {
         await storeStore.fetchStores()
+        storeStore.discoveredStore = null
         initBleHandler()
         toast('Refreshed')
       }}

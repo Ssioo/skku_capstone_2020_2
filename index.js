@@ -7,20 +7,9 @@ import { App } from './App'
 import React from 'react'
 import { name as appName } from './app.json'
 import messaging from '@react-native-firebase/messaging'
-import PushNotificationIOS from '@react-native-community/push-notification-ios'
-import PushNotification from 'react-native-push-notification'
 
 messaging().setBackgroundMessageHandler(async (message) => {
   console.log(message)
-})
-
-PushNotification.configure({
-  onRegister: (token) => {
-
-  },
-  onNotification: (noti) => {
-    noti.finish(PushNotificationIOS.FetchResult.NoData)
-  },
 })
 
 // enable codepush only in release

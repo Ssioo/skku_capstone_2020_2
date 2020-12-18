@@ -22,8 +22,6 @@ import { MaterialCommunityIconsPack, MaterialIconsPack } from 'infra/icon-pack'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import messaging from '@react-native-firebase/messaging'
 import { userStore } from 'stores/user'
-import PushNotification from 'react-native-push-notification'
-import { appStore } from 'stores/app'
 import { Push } from 'components/push'
 
 export const App = () => {
@@ -34,13 +32,6 @@ export const App = () => {
     const foregroundFCM = messaging().onMessage(async (message) => {
       console.log(message)
       Push.show(message.data?.title ?? '', message.data?.body ?? '')
-      PushNotification.localNotification({
-        channelId: 'covid',
-        vibration: 500,
-        ignoreInForeground: false,
-        title: message.data?.title,
-        message: message.data?.body,
-      })
     })
     YellowBox.ignoreWarnings(WARNING_WHITELIST)
     return () => {
